@@ -51,6 +51,9 @@ public class ServiceRegistryResource {
 	@Path("/register")
 	public Response registerEntry(ServiceRegistryEntry sre) {
 		gentries.getEntity().add(sre);
+		gentries.getEntity().add(this.sre);
+		gentries.getEntity().add(sre2);
+		gentries.getEntity().add(sre3);
 		return Response.status(Status.OK).entity(gentries).build();
 	}
 
