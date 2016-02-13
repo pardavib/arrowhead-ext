@@ -32,13 +32,13 @@ public class ServiceRegistryResource {
 
 	// a few hardcoded entries, so the list isn't empty
 	ServiceRegistryEntry sre = new ServiceRegistryEntry(
-			new ArrowheadSystem("systemGroup", "systemName", "192.168.1.1", "8080", "authenticationInfo"), "serviceURI",
+			new ArrowheadSystem("systemGroup", "systemName", "192.168.1.1", "8080", "authenticationInfo"), "elsoUri",
 			"serviceMetadata", "tSIG_key");
 	ServiceRegistryEntry sre2 = new ServiceRegistryEntry(
-			new ArrowheadSystem("systemGroup", "systemName", "192.168.1.2", "8080", "authenticationInfo"), "serviceURI",
+			new ArrowheadSystem("systemGroup", "systemName", "192.168.1.2", "8080", "authenticationInfo"), "masodikUri",
 			"serviceMetadata", "tSIG_key");
 	ServiceRegistryEntry sre3 = new ServiceRegistryEntry(
-			new ArrowheadSystem("systemGroup", "systemName", "192.168.1.3", "8080", "authenticationInfo"), "serviceURI",
+			new ArrowheadSystem("systemGroup", "systemName", "192.168.1.3", "8080", "authenticationInfo"), "harmadikUri",
 			"serviceMetadata", "tSIG_key");
 
 	@GET
@@ -60,6 +60,7 @@ public class ServiceRegistryResource {
 	@PUT
 	@Path("/query")
 	public Response queueEntries(ServiceQueryForm sqf) {
+		System.out.println("serviceregistry: inside the queueEntries method");
 		gentries.getEntity().add(sre);
 		gentries.getEntity().add(sre2);
 		gentries.getEntity().add(sre3);

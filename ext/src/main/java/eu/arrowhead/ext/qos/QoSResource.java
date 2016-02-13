@@ -13,6 +13,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import eu.arrowhead.common.model.ArrowheadSystem;
+import eu.arrowhead.common.model.messages.QoSReservationResponse;
+import eu.arrowhead.common.model.messages.QoSReserve;
 import eu.arrowhead.common.model.messages.QoSVerificationResponse;
 import eu.arrowhead.common.model.messages.QoSVerify;
 
@@ -36,19 +38,18 @@ public class QoSResource {
 	@PUT
 	@Path("/verification")
 	public Response qosVerification(QoSVerify qosVerify) {
+		System.out.println("qosservice: inside the qosVerification method");
 		for (ArrowheadSystem system : qosVerify.getProvider()) {
 			qosMap.put(system, true);
 		}
-
-		return Response.status(Status.OK).entity(qosMap).build();
-
+		QoSVerificationResponse qvr = new QoSVerificationResponse(qosMap);
+		return Response.status(Status.OK).entity(qvr).build();
 	}
 
 	@PUT
 	@Path("/reservation")
-	public Response qosReservation(QoSVerificationResponse qosReservation) {
-		boolean reserved = true;
-
-		return Response.status(Status.OK).entity(reserved).build();
+	public Response qosReservation(QoSReserve qosReservation) {
+		QoSReservationResponse qosrr = new QoSReservationResponse(true);
+		return Response.status(Status.OK).entity(qosrr).build();
 	}
 }
