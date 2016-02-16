@@ -42,7 +42,7 @@ public class QoSResource {
 		for (ArrowheadSystem system : qosVerify.getProvider()) {
 			qosMap.put(system, true);
 		}
-		QoSVerificationResponse qvr = new QoSVerificationResponse(qosMap);
+		QoSVerificationResponse qvr = new QoSVerificationResponse(qosMap, "Accepted");
 		return Response.status(Status.OK).entity(qvr).build();
 	}
 
